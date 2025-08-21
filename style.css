@@ -13,8 +13,12 @@ div#wrap {
   align-items: center;
 }
 
+#content > div {
+
+}
+
 .wrap {
-  background-color: blueviolet;
+  background-color: brown;
 }
 
 div#wrap,
@@ -28,23 +32,36 @@ div#content {
   flex-direction: column;
   border-color: azure;
   border-width: 1em;
-  height: 10em;
-  background-color: greenyellow;
   align-items: center;
   justify-content: center;
+   background-color: blue;
 }
 
-#content > h3 {
-  width: 100%;
+#content > p {
+  color: #D1D5DC;
   text-align: center;
-  margin-bottom: 2em;
+  width: 50%;
+}
+
+#content > div {
+  background-color: #2fc296;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+}
+
+#content > div > img {
+  width: 5em;
+  height: 5em;
+  margin: 1em;
 }
 
 .wrapButtons {
   width: fit-content;
-  background-color: blue;
   display: flex;
   flex-direction: row-reverse;
+  background-color: #c22fbb !important;
+  margin-top: 1.5%;
 }
 
 .wrapButtons > button {
