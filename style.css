@@ -1,6 +1,7 @@
 html {
   height: 100%;
 }
+
 body {
   margin: 0;
   width: 100%;
@@ -11,10 +12,6 @@ div#wrap {
   height: 90%;
   display: flex;
   align-items: center;
-}
-
-#content > div {
-
 }
 
 .wrap {
@@ -37,10 +34,19 @@ div#content {
    background-color: blue;
 }
 
+#content h1 {
+  color: #D1D5DC;
+  text-align: center;
+}
+
 #content > p {
   color: #D1D5DC;
   text-align: center;
   width: 50%;
+}
+
+#texto__carga {
+  display: none;
 }
 
 #content > div {
@@ -48,12 +54,6 @@ div#content {
   padding: 1em;
   display: flex;
   flex-direction: row;
-}
-
-#content > div > img {
-  width: 5em;
-  height: 5em;
-  margin: 1em;
 }
 
 .wrapButtons {
