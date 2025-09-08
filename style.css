@@ -6,18 +6,32 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
+  background-color: rgb(35, 35, 113);
+}
+
+div#page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+div#page > h1 {
+  text-align: center;
+  color: aliceblue;
 }
 
 #content {
+  background-color: blanchedalmond;
   display: flex;
   flex-direction: column;
   border-color: azure;
   border-width: 1em;
   align-items: center;
-  justify-content: center;
-   background-color: blue;
-   height: 70%;
-   padding: 20px 10vw 0px;
+  justify-content: flex-start;
+  height: 90%;
+  padding: 20px 10vw 0px;
+  overflow: scroll;
 }
 
 .post {
