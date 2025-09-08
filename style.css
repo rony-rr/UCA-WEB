@@ -8,22 +8,6 @@ body {
   height: 100%;
 }
 
-div#wrap {
-  height: 90%;
-  display: flex;
-  align-items: center;
-}
-
-.wrap {
-  background-color: brown;
-}
-
-div#wrap,
-div#content {
-  width: 90%;
-  padding: 5%;
-}
-
 #content {
   display: flex;
   flex-direction: column;
@@ -32,45 +16,25 @@ div#content {
   align-items: center;
   justify-content: center;
    background-color: blue;
+   height: 70%;
+   padding: 20px 10vw 0px;
 }
 
-#content h1 {
-  color: #D1D5DC;
-  text-align: center;
-}
-
-#content > p {
-  color: #D1D5DC;
-  text-align: center;
-  width: 50%;
-}
-
-#texto__carga {
-  display: none;
-}
-
-#content > div {
-  background-color: #2fc296;
-  padding: 1em;
+.post {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  background-color: aquamarine;
+  margin-bottom: 20px;
+  padding: 20px 5vw;
+  border-radius: 12px;
 }
 
-.wrapButtons {
-  width: fit-content;
-  display: flex;
-  flex-direction: row-reverse;
-  background-color: #c22fbb !important;
-  margin-top: 1.5%;
+.post > h4{
+  color: black;
+  font-size: x-large;
 }
 
-.wrapButtons > button {
-  margin: 1em;
-  background-color: transparent;
-  border-width: 0.2em;
-  border-color: white;
-  color: white;
-  padding: 1em;
-  border-radius: 0.3em;
-  cursor: grab;
+.post > p {
+  color: black;
+  font-size: 20px;
 }
