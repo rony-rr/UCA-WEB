@@ -1,0 +1,14 @@
+{
+  "name": "test-backend",
+  "version": "1.0.1",
+  "description": "any",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
