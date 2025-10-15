@@ -1,12 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useMemo, useState } from "react";
 import "./App.css";
 
 const ListItem = (props) => {
+  console.log({ props });
   const { element } = props;
   return (
-    <div id={`data_${element.id}`}>
+    <div
+      id={`data_${element.id}`}
+      style={{
+        borderBottom: "solid 1px #2e1ebaff",
+        marginBottom: 10,
+      }}
+    >
       <div
         style={
           element.isActive
@@ -33,25 +38,39 @@ const ListItem = (props) => {
 function App() {
   const [dataSet, setDataSet] = useState([]);
 
-  const extract = async () => {
+  const extractData = async () => {
     const res = await fetch("http://localhost:3001/findUsers");
     const parsedRes = await res.json();
+    if (!parsedRes.status) return;
 
-    setDataSet(parsedRes);
+    setDataSet(parsedRes.data);
   };
 
-  const LIST = dataSet.length
-    ? dataSet.map((el) => {
-        return <ListItem element={el} />;
-      })
-    : null;
+  const LIST = useMemo(() => {
+    return dataSet.length > 0
+      ? dataSet.map((el) => <ListItem element={el} />)
+      : null;
+  }, [dataSet]);
 
   return (
     <>
-      <h1>List de elementos</h1>
-      <section>{LIST}</section>
+      <h1>Lista de elementos</h1>
+      <section
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "25vh",
+          overflowY: "scroll",
+          border: "solid 2px #dacdcdff",
+          borderRadius: 5,
+          padding: 5,
+        }}
+      >
+        {LIST}
+      </section>
       <div className="card">
-        <button onClick={extract}>Recuperar datos</button>
+        <button onClick={extractData}>Recuperar datos</button>
       </div>
     </>
   );
