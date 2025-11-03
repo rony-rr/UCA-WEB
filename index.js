@@ -3,15 +3,30 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import bodyParser from "body-parser";
 import cors from "cors";
-
-import { data } from './data/index.js';
+import controllers from "./controllers/controllers.js";
+import { data } from "./data/index.js";
 
 const app = express();
 const PORT = 5001;
-const JWT_SECRET = "hola"; // Use a strong, secure key in production
+const JWT_SECRET = "_wtr_hola"; // Use a strong, secure key in production
 
 app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.use(cors());
+
+// has passwd
+const generarHash = async () => {
+  const passwordOriginal = "1234";
+  const saltRounds = 10; // Nivel de complejidad para el hash
+
+  const hash = await bcrypt.hash(passwordOriginal, saltRounds);
+  console.log("Contraseña original:", passwordOriginal);
+  console.log("Hash generado:", hash);
+};
 
 // Middleware: Verify Token
 const verifyToken = (req, res, next) => {
@@ -32,9 +47,9 @@ app.post("/signIn", async (req, res) => {
   const user = data.find((u) => u.email === email);
   if (!user) return res.status(404).json({ message: "User not found" });
 
-//   const isPasswordValid = await bcrypt.compare(password, user.password);
-//   if (!isPasswordValid)
-//     return res.status(400).json({ message: "Invalid credentials" });
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+  if (!isPasswordValid)
+    return res.status(400).json({ message: "Invalid credentials" });
 
   const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1m" });
   res.status(200).json({ token });
@@ -43,6 +58,14 @@ app.post("/signIn", async (req, res) => {
 app.get("/protected", verifyToken, (req, res) => {
   res.status(200).json({ message: "Protected data accessed", user: req.user });
 });
+
+app.get("/", async (req, res) => {
+  await generarHash();
+  res.status(200).json({ info: "Node.js, Express, and Postgres API" });
+});
+
+app.get('/users', controllers.getUsers);
+app.post('/users', verifyToken, controllers.createUser);
 
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
