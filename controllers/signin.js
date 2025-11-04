@@ -1,5 +1,10 @@
 import { db } from "../data/connection.js";
 
+// $1, $2, $3
+// [param1, param2, param3]
+
+// [param1 = $1, param2 = $2, param3 = $3]
+
 export const SingIn = async (req, res) => {
   const { email, password } = req.body;
   db.query('SELECT * FROM users WHERE email = $1', [email], async (error, results) => {

@@ -7,10 +7,11 @@ import cors from "cors";
 // inyectar las keys o valores de los secretos
 import { PORT } from "./keys/keys.js";
 
-// Módulos importados
+// Módulos controladores importados
 import { SingIn } from "./controllers/signin.js";
 import { SingUp } from "./controllers/signup.js";
 
+// configuración básica
 const app = express();
 
 app.use(bodyParser.json());
