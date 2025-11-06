@@ -57,3 +57,9 @@
 ## Oracle -> Lógica programatica -> PL/SQL -> Programas y generar elementos o interfaces programaticas, para menejar la información
     ## Cursores -> son un ejemplo de implementaciones programaticas en PL/SQL
     ## Datawarehouse -> sirve para manejar grandes cantidades de información -> Procesos de Bi -> Toma de decisiones
+
+
+
+#### La entrega de la guía X
+    -- cuenta cómo una sola nota de las guías de la 6 a la 10,
+    -- 

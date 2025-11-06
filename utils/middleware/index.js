@@ -1,4 +1,5 @@
-import { JWT_SECRET } from "../../keys/keys";
+import jwt from "jsonwebtoken";
+import { JWT_SECRET } from "../../keys/keys.js";
 
 // Middleware
 export const verifyToken = (req, res, next) => {
